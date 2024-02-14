@@ -14,17 +14,17 @@ setopt prompt_subst
 # zstyle ':vcs_info:git:*' formats '%F{magenta}(%b)%f'
 
 # Without git
-PROMPT="%F{cyan}%*%f #%F{green}%n%f %F{cyan}%3~%B%F{blue} > %f%b"
+PROMPT="%F{cyan}%*%f %F{blue}✡%f%F{green}%n%f %F{cyan}%3~%B%F{blue} > %f%b"
 
 # -----------------------------------------------------------------------------------------
 # MY ENVIRONMENT VARIABLES
 
 BAT_THEME="ansi"
-PASS_DB="/home/ricky/my/Passwords.kbdx"
+PASS_DB="~/my/Passwords.kbdx"
 EDITOR="micro"
 
 # Rust cargo apps
-export PATH="$PATH:/home/ricky/.cargo/bin"
+export PATH="$PATH:~/.cargo/bin"
 
 # -----------------------------------------------------------------------------------------
 # MY ALIASES
@@ -34,6 +34,7 @@ alias l='exa -lhg --icons --git --ignore-glob="*.pyc"'
 alias ll="exa -alhg --icons --git"
 alias llr="exa -alhg --icons --git --recurse"
 alias tree='exa -lhg --icons --tree --git --ignore-glob="*.pyc"'
+alias rg='rg -.'
 
 # Terminal & Shells
 alias kcl='clone-in-kitty'
@@ -61,10 +62,6 @@ alias lock-session='loginctl lock-session'
 # Drives
 alias mount-win='sudo mount /dev/nvme0n1p3 /media/windows'
 alias mount-toshiba-680='sudo mount /dev/$(lsblk | grep -o "sd\w" | tail -1)2 /ext_drv/toshiba-680gb'
-
-
-
-
 
 # -----------------------------------------------------------------------------------------
 # MY FUNCS
