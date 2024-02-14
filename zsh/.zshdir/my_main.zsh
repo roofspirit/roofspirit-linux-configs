@@ -11,8 +11,8 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[comment]='fg=magenta,bold'
 
 # Prompts for zsh
-setopt PROMPT_SUBST
-PROMPT="[%B%F{cyan}%*%f%b] %K{black}%F{green}%n%f%k%K{black}%F{green}@%f%k%K{black}%F{green}%M%f%k%K{black} %F{cyan}%d%f%k%B%F{cyan} > %f%b"
+# setopt PROMPT_SUBST
+# PROMPT="[%B%F{cyan}%*%f%b] %K{black}%F{green}%n%f%k%K{black}%F{green}@%f%k%K{black}%F{green}%M%f%k%K{black} %F{cyan}%d%f%k%B%F{cyan} > %f%b"
 # PROMPT="[%B%F{cyan}%*%f%b] %K{black}%F{green}%n%f%k%K{black}%F{green}@%f%k%K{black}%F{green}%M%f%k%K{black}%F{cyan}%d%f%k ${vcs_info_msg_0} %B%F{cyan} > %f%b"
 #PROMPT="[%B%F{73}%T%f%b] %K{24}%n%k%K{24}@%k%K{24}%M%k%K{56}%d%k%B%F{cyan} > %f%b"
 #PROMPT="[%B%F{105}%T%f%b] %K{90}%F{200}%n%f%k%K{90}@%k%K{90}%M%k%K{56}%d%k%B%F{199} > %f%b"
