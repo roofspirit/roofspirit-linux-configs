@@ -36,7 +36,7 @@ ZSH_GIT_PROMPT_FORCE_BLANK=1
 ZSH_GIT_PROMPT_SHOW_UPSTREAM="no"
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
-ZSH_THEME_GIT_PROMPT_SUFFIX=" "
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_SEPARATOR=" "
 ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_no_bold[cyan]%}:"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_no_bold[magenta]%}"
@@ -50,13 +50,13 @@ ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_no_bold[magenta]%}"
 # ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✚"
 # ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
 # ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
-# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
 # In the second line of the prompt $psvar[12] is read
 # PROMPT=$'%F{blue}%~%f %F{242}$(gitprompt)%f
 # %(12V.%F{242}%12v%f .)%(?.%F{magenta}.%F{red})❯%f '
 
-PROMPT=$'%(12V.%F{242}%12v%f .)%(?.%F{magenta}.%F{red})%F{cyan}%*%f %F{blue}✡%f%F{green}%n%f %F{cyan}%3~%f $(gitprompt)%B%F{blue}> %f%b'
+PROMPT=$'%(12V.%F{white}%12v%f .)%(?.%F{magenta}.%F{red})%F{cyan}%*%f %F{blue}✡%f%F{green}%n%f %F{cyan}%3~%f $(gitprompt) %B%F{blue}> %f%b'
 RPROMPT=''
 
 setup() {
@@ -103,7 +103,9 @@ setup
 
 BAT_THEME="ansi"
 PASS_DB="~/my/Passwords.kbdx"
+PASSWORD_STORE_CLIP_TIME=28800
 EDITOR="micro"
+BROWSER="google-chrome-stable"
 
 # Rust cargo apps
 export PATH="$PATH:~/.cargo/bin"
@@ -112,11 +114,15 @@ export PATH="$PATH:~/.cargo/bin"
 # MY ALIASES
 
 # Basic
-alias l='exa -lhg --icons --git --ignore-glob="*.pyc"'
-alias ll="exa -alhg --icons --git"
-alias llr="exa -alhg --icons --git --recurse"
-alias tree='exa -lhg --icons --tree --git --ignore-glob="*.pyc"'
+alias cd='cd -P'
+alias l='exa -lhg -s type --icons --git --ignore-glob="*.pyc"'
+alias ll="exa -alhg -s type --icons --git"
+alias llr="exa -alhg -s type --icons --git --recurse"
+alias tree='exa -lhg -s type --icons --tree --git --ignore-glob="*.pyc"'
 alias rg='rg -.'
+
+alias cbc='clipcopy'
+alias cbp='clippaste'
 
 # Terminal & Shells
 alias kcl='clone-in-kitty'
