@@ -1,0 +1,68 @@
+- name: Main playbook
+  hosts: 127.0.0.1
+  gather_facts: true
+  connection: local
+  remote_user: rick
+  tasks:
+    - name: Install packages via remote shell scripts
+      block:
+        - name: Rust&Cargo
+          block:
+          - name: Get installer # noqa
+            ansible.builtin.get_url:
+              url: https://sh.rustup.rs
+              dest: /tmp/rust.sh
+              mode: 777
+
+          - name: Run shell script
+            ansible.builtin.script:
+              cmd: /tmp/rust.sh -y --profile=minimal
+
+        - name: Micro editor
+          block:
+          - name: Get installer # noqa
+            ansible.builtin.get_url:
+              url: https://getmic.ro
+              dest: /tmp/micro.sh
+              mode: 777
+
+          - name: Run shell script
+            ansible.builtin.script: /tmp/micro.sh
+            args:
+              creates: /tmp/micro
+
+          - name: Move bin to /usr/bin
+            ansible.builtin.command: mv /tmp/micro /usr/bin/micro
+            args:
+              removes: /tmp/micro
+              creates: /usr/bin/micro
+
+        - name: Pyenv
+          block:
+          - name: Get installer # noqa
+            ansible.builtin.get_url:
+              url: https://pyenv.run
+              dest: /tmp/pyenv.sh
+              mode: 777
+
+          - name: Run shell script
+            ansible.builtin.script: /tmp/pyenv.sh
+
+    - name: Install cargo packages
+      community.general.cargo:
+        name:
+          - bat
+          - zoxide
+          - exa
+
+
+    - name: Install oh-my-zsh to user
+      block:
+      - name: Get installer # noqa
+        ansible.builtin.get_url:
+          url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+          dest: /tmp/oh-my-zsh.sh
+          mode: 777
+
+      - name: Run shell script
+        ansible.builtin.script: /tmp/oh-my-zsh.sh

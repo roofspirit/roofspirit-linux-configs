@@ -1,0 +1,19 @@
+---
+- name: Main playbook
+  hosts: 127.0.0.1
+  gather_facts: true
+  connection: local
+  vars:
+    package_names:
+      python:
+        alpine: python3
+        debian: python3
+        archlinux: python
+        almalinux: python3
+        rockylinux: python3
+
+  tasks:
+    - name: Show current distribution
+      ansible.builtin.debug:
+        msg: Python package name is {{ package_names.python[ansible_facts.distribution | lower] }}
+      when: ansible_facts is defined

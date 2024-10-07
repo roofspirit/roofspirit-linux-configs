@@ -1,0 +1,70 @@
+---
+- name: Main playbook
+  hosts: 127.0.0.1
+  gather_facts: true
+  connection: local
+  vars:
+    username: rick
+    packages:
+      repos:
+        alpine: ""
+        debian: ""
+        archlinux: ""
+        almalinux:
+          - epel-release
+        rockylinux:
+          - epel-release
+      base:
+        - sudo
+        - bash
+        - zsh
+        - curl
+        - wget
+        - git
+        - util-linux
+        - htop
+      variable:
+        alpine:
+          - python3
+          - py3-pip
+        debian:
+          - python3
+          - python3-pip
+        archlinux:
+          - python
+          - python-pip
+        almalinux:
+          - python3
+          - python3-pip
+        rockylinux:
+          - python3
+          - python3-pip
+
+  tasks:
+    - name: Define distro
+      ansible.builtin.set_fact:
+        distro_variable_packages: "{{ packages.variable[ansible_facts.distribution | lower] }}"
+        distro_repos: "{{ packages.repos[ansible_facts.distribution | lower] }}"
+      when: ansible_facts is defined
+
+    - name: Install repos via package manager
+      ansible.builtin.package:
+        name: "{{ distro_repos }}"
+        state: present
+      when: distro_repos != ""
+
+    - name: Install common packages via package manager
+      ansible.builtin.package:
+        name: "{{ packages.base }}"
+        state: present
+
+    - name: Install packages with variable names distro-to-distro
+      ansible.builtin.package:
+        name: "{{ distro_variable_packages }}"
+
+    - name: Create sudo user
+      ansible.builtin.user:
+        name: "{{ username }}"
+        append: true
+        groups: "wheel"
+        shell: /usr/bin/zsh
