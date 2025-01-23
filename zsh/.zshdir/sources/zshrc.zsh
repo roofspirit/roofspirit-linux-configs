@@ -76,6 +76,7 @@ alias llr="exa -alhg -s type --icons --git --recurse"
 alias tree='exa -lhg -s type --icons --tree --git --ignore-glob="*.pyc"'
 alias treel='exa -alhg -s type --icons --tree --git --ignore-glob="*.pyc"'
 alias rg='rg -.'
+alias clear="printf '\033[2J\033[3J\033[1;1H'"
 
 alias clr='clear-screen-and-scrollback'
 
@@ -92,6 +93,8 @@ alias trsrst='trash-restore'
 
 # Terminal & Shells
 alias kcl='clone-in-kitty'
+alias kclt='clone-in-kitty --type=tab'
+alias kclw='clone-in-kitty --type=os-window'
 alias src-act='source bin/activate'
 alias src-act-poe='source .venv/bin/activate'
 alias conda-start="~/miniconda3/etc/profile.d/conda.sh"
@@ -109,12 +112,13 @@ alias lazypodman='DOCKER_HOST=unix:///run/user/1000/podman/podman.sock lazydocke
 # Applications
 alias code-low-scale='code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland'
 
-# Power management
+# Power & System management
 alias power-sleep='systemctl suspend'
 alias power-hibernate='systemctl hibernate'
 alias power-shutdown='systemctl poweroff'
 alias power-reboot='systemctl reboot'
 alias lock-session='loginctl lock-session'
+alias plasma-reload='systemctl restart --user plasma-plasmashell'
 
 # Drives
 alias mount-win='sudo mount /dev/nvme0n1p3 /media/windows'
