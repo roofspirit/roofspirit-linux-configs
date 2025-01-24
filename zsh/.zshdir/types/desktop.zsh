@@ -13,5 +13,6 @@ declare -a __zsh_sources=(
     "$MY_ZSHDIR/sources/utils/pnpm.zsh"
 
     # Hidden
-    "$MY_ZSHDIR/sources/hidden/*.zsh"
+    "$MY_ZSHDIR/sources/hidden/envs.zsh"
+    "$MY_ZSHDIR/sources/hidden/git-profiles.zsh"
 )
