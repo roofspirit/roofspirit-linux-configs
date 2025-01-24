@@ -12,6 +12,6 @@ declare -a __zsh_sources=(
     "$MY_ZSHDIR/sources/utils/rust.zsh"
     "$MY_ZSHDIR/sources/utils/pnpm.zsh"
 
-    # Environments
-    "$MY_ZSHDIR/sources/envs.zsh"
+    # Hidden
+    "$MY_ZSHDIR/sources/hidden/*.zsh"
 )
