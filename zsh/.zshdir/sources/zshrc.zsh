@@ -13,6 +13,7 @@ export SSL_CERT_DIR=/etc/ssl/certs
 export LANG=en_US.UTF-8
 export ANSIBLE_NOCOWS=1
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export PATH="$HOME/go/bin:$GOPATH/bin:$PATH"
 # -----------------------------------------------------------------------------------------
 # MY FUNCS
 function backitup() {
@@ -71,8 +72,13 @@ function watch-asb() {
 alias cd='cd -P'
 alias l='exa -lhg -s type --icons --git --ignore-glob="*.pyc"'
 alias ll="exa -alhg -s type --icons --git"
-alias lll="exa -aalhg -s type --icons --git"
+alias lll="ll -a"
+# alias lll="exa -aalhg -s type --icons --git"
 alias llr="exa -alhg -s type --icons --git --recurse"
+alias lts="l --total-size"
+alias llts="ll --total-size"
+alias lllts="lll --total-size"
+
 alias tree='exa -lhg -s type --icons --tree --git --ignore-glob="*.pyc"'
 alias treel='exa -alhg -s type --icons --tree --git --ignore-glob="*.pyc"'
 alias rg='rg -.'

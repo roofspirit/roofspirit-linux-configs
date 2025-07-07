@@ -11,6 +11,7 @@ declare -a __zsh_sources=(
     "$MY_ZSHDIR/sources/utils/conda.zsh"
     "$MY_ZSHDIR/sources/utils/rust.zsh"
     "$MY_ZSHDIR/sources/utils/pnpm.zsh"
+    "$MY_ZSHDIR/sources/utils/uv.zsh"
 
     # Hidden
     "$MY_ZSHDIR/sources/hidden/envs.zsh"

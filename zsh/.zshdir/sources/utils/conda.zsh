@@ -15,3 +15,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 compinit conda
 
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
